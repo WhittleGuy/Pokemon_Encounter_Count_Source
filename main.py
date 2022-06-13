@@ -24,19 +24,17 @@ class Counter:
         self.count = count
 
     def keyPress(self, key):
+        action = None
+        try:
+            key = key.char
+        except AttributeError:
+            key = str(key)
 
-        if self.active:
-            action = None
-            try:
-                key = key.char
-            except AttributeError:
-                key = str(key)
-
-            if key in INCREMENT_LIST:
-                action = '{+}'
-            elif key in DECREMENT_LIST:
-                action = '{-}'
-            self.change_count(action)
+        if key in INCREMENT_LIST:
+            action = '{+}'
+        elif key in DECREMENT_LIST:
+            action = '{-}'
+        self.change_count(action)
 
     def change_count(self, action):
         if action != None:
