@@ -1,6 +1,9 @@
 from pynput import keyboard
 from pynput.keyboard import Listener
 
+FILE = './count.txt'
+STEP_SIZE = 2
+
 
 class Counter:
     def __init__(self, file, step):
@@ -34,5 +37,6 @@ class Counter:
         input()
 
 
-EncounterMachine = Counter('./count.txt', 2)
-EncounterMachine.run()
+if __name__ == '__main__':
+    EncounterMachine = Counter(FILE, STEP_SIZE)
+    EncounterMachine.run()
