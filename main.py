@@ -19,16 +19,14 @@ class Counter:
 
         if currKey != '' and currKey != None:
             count = ''
-            with open(self.file, 'r') as text:
+            with open(self.file, 'r+') as text:
                 count = text.readline()
-            if currKey == '{UP}':
-                with open(self.file, 'w') as text:
+            with open(self.file, 'w+') as text:
+                if currKey == '{UP}':
                     count = str(int(count) + self.step)
-                    text.write(count)
-            elif currKey == '{DOWN}':
-                with open(self.file, 'w') as text:
+                elif currKey == '{DOWN}':
                     count = str(int(count) - self.step)
-                    text.write(count)
+                text.write(count)
 
     def run(self):
         keyboardListener = keyboard.Listener(on_press=self.keyPress)
